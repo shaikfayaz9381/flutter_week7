@@ -78,14 +78,24 @@ class UserFormScreen extends StatefulWidget {
 class _UserFormScreenState extends State<UserFormScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _ageController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _nameController =
+      TextEditingController();
+
+  final TextEditingController _emailController =
+      TextEditingController();
+
+  final TextEditingController _ageController =
+      TextEditingController();
+
+  final TextEditingController _passwordController =
+      TextEditingController();
 
   Role _selectedRole = Role.user;
+
   Gender _selectedGender = Gender.male;
+
   DateTime? _selectedDOB;
+
   bool _termsAccepted = false;
 
   // Select Date of Birth
@@ -241,7 +251,8 @@ class _UserFormScreenState extends State<UserFormScreen> {
                     border: OutlineInputBorder(),
                   ),
                   validator: (value) {
-                    if (value == null || value.trim().isEmpty) {
+                    if (value == null ||
+                        value.trim().isEmpty) {
                       return 'Name is required';
                     }
 
@@ -260,11 +271,13 @@ class _UserFormScreenState extends State<UserFormScreen> {
                     border: OutlineInputBorder(),
                   ),
                   validator: (value) {
-                    if (value == null || value.trim().isEmpty) {
+                    if (value == null ||
+                        value.trim().isEmpty) {
                       return 'Email is required';
                     }
 
-                    if (!value.contains('@') || !value.contains('.')) {
+                    if (!value.contains('@') ||
+                        !value.contains('.')) {
                       return 'Enter a valid email';
                     }
 
@@ -283,13 +296,17 @@ class _UserFormScreenState extends State<UserFormScreen> {
                     border: OutlineInputBorder(),
                   ),
                   validator: (value) {
-                    if (value == null || value.trim().isEmpty) {
+                    if (value == null ||
+                        value.trim().isEmpty) {
                       return 'Age is required';
                     }
 
-                    final int? age = int.tryParse(value.trim());
+                    final int? age =
+                        int.tryParse(value.trim());
 
-                    if (age == null || age <= 0 || age > 120) {
+                    if (age == null ||
+                        age <= 0 ||
+                        age > 120) {
                       return 'Enter a valid age';
                     }
 
@@ -308,7 +325,8 @@ class _UserFormScreenState extends State<UserFormScreen> {
                     border: OutlineInputBorder(),
                   ),
                   validator: (value) {
-                    if (value == null || value.isEmpty) {
+                    if (value == null ||
+                        value.isEmpty) {
                       return 'Password is required';
                     }
 
@@ -355,7 +373,10 @@ class _UserFormScreenState extends State<UserFormScreen> {
                       child: Text(
                         _selectedDOB == null
                             ? 'DOB: Not Selected'
-                            : 'DOB: ${_selectedDOB!.day}/${_selectedDOB!.month}/${_selectedDOB!.year}',
+                            : 'DOB: '
+                                '${_selectedDOB!.day}/'
+                                '${_selectedDOB!.month}/'
+                                '${_selectedDOB!.year}',
                         style: const TextStyle(
                           fontSize: 16,
                         ),
@@ -380,7 +401,8 @@ class _UserFormScreenState extends State<UserFormScreen> {
                       value: _termsAccepted,
                       onChanged: (bool? value) {
                         setState(() {
-                          _termsAccepted = value ?? false;
+                          _termsAccepted =
+                              value ?? false;
                         });
                       },
                     ),
